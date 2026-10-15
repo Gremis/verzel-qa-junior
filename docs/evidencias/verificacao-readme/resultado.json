@@ -1,0 +1,19 @@
+{
+  "objetivo": "verificar instalacao e comandos do README",
+  "responsavel": "Codex",
+  "instalacao": "npm ci: aprovada",
+  "tipos": "npm run typecheck: aprovado",
+  "listagem": "npm run test:list: 20 testes, HTML e JSON preservados por SHA-256",
+  "servidorRelatorio": "npm run report -- --host 127.0.0.1 --port 9337: HTTP 200; encerrado apos verificacao",
+  "comandoReexecucao": "npm test",
+  "codigoSaida": 1,
+  "estatisticas": {
+    "startTime": "2026-10-15T22:59:16.012Z",
+    "duration": 18706.526,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "nota": "Reexecucao para restaurar relatorio temporario apos detectar efeito do antigo comando de listagem. Evidencias consolidadas anteriores preservadas."
+}

@@ -7,8 +7,10 @@
     "test": "playwright test",
     "test:infra": "playwright test tests/infrastructure.spec.ts",
     "test:headed": "playwright test --headed",
+    "test:demo": "playwright test --config playwright.demo.config.ts",
     "test:list": "playwright test --list",
     "report": "playwright show-report",
+    "report:demo": "playwright show-report playwright-demo-report",
     "typecheck": "tsc --noEmit"
   },
   "engines": {

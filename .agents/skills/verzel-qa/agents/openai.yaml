@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verzel QA"
+  short_description: "Planejar, executar e relatar o teste QA da Verzel"
+  default_prompt: "Use $verzel-qa para trabalhar na etapa solicitada do teste QA da Verzel, preservando a rastreabilidade e registrando apenas resultados reais."

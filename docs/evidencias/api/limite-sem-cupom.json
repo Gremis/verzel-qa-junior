@@ -1,0 +1,45 @@
+{
+  "responsavel": "Codex",
+  "modalidade": "exploracao por agente via API",
+  "inicio": "2026-10-15T18:53:42.055744-03:00",
+  "fim": "2026-10-15T18:53:42.184896-03:00",
+  "ferramenta": "curl 8.7.1 (x86_64-apple-darwin25.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.68.1",
+  "versaoImplantada": "nao verificada",
+  "requisicao": {
+    "metodo": "POST",
+    "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "itens": [
+        {
+          "produtoId": "P005",
+          "quantidade": 2
+        }
+      ]
+    }
+  },
+  "resposta": {
+    "status": 200,
+    "headers": "HTTP/2 200 \ndate: Thu, 15 Oct 2026 21:53:39 GMT\ncontent-type: application/json; charset=utf-8\ncontent-length: 224\naccess-control-allow-origin: *\naccess-control-allow-headers: content-type\naccess-control-allow-methods: GET, POST, OPTIONS\nreport-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=VAO32gxJdFuJ7VLiNG1hkm2pc%2Bfu7BSmGL2luExc6Z7Ekxde%2FQZ2f9%2Bak2AWMAgnHhkjyGRMFHtyWVnm0R4rChG8LFeGB6WFyzHg9TQP22m5xC%2BbQpV4XcKx6K3PxjclC9ROI6PpMI3fzzXxVlkyDMJa2aZRJa7wqrO3iGMawX0UWoKh45KgveZ%2FH58%3D\"}]}\nnel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\nserver: cloudflare\ncf-ray: a4b20ecca8fb2bd0-CWB\nalt-svc: h3=\":443\"; ma=86400\n\n",
+    "body": {
+      "itens": [
+        {
+          "produtoId": "P005",
+          "nome": "Mochila Urbana 20L",
+          "precoUnitario": 100,
+          "quantidade": 2,
+          "total": 200
+        }
+      ],
+      "subtotal": 200,
+      "desconto": 0,
+      "frete": 19.9,
+      "freteGratis": false,
+      "valorFaltanteFreteGratis": 0,
+      "total": 219.9,
+      "cupom": null
+    }
+  }
+}

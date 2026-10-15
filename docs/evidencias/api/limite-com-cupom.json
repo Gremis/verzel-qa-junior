@@ -1,0 +1,50 @@
+{
+  "responsavel": "Codex",
+  "modalidade": "exploracao por agente via API",
+  "inicio": "2026-10-15T18:53:42.200418-03:00",
+  "fim": "2026-10-15T18:53:42.362622-03:00",
+  "ferramenta": "curl 8.7.1 (x86_64-apple-darwin25.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.68.1",
+  "versaoImplantada": "nao verificada",
+  "requisicao": {
+    "metodo": "POST",
+    "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "itens": [
+        {
+          "produtoId": "P005",
+          "quantidade": 2
+        }
+      ],
+      "cupom": "BEMVINDO10"
+    }
+  },
+  "resposta": {
+    "status": 200,
+    "headers": "HTTP/2 200 \ndate: Thu, 15 Oct 2026 21:53:39 GMT\ncontent-type: application/json; charset=utf-8\ncontent-length: 319\naccess-control-allow-origin: *\naccess-control-allow-headers: content-type\naccess-control-allow-methods: GET, POST, OPTIONS\nreport-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=kx7Cnvzg01mFyWYu2VwJ3n5HqDZbsojyEo%2FOZO1lDGXBhLXTYspsu26kzFwCWXwUsEORrnpV%2FnL8YlCNASHR2Ejerh43ycXac9KpHle3%2F5llKUtgVUA2h08lpGwucDDlLmPE%2FvpEBgd%2F0ZqKnmbTNxwc3SgzVEP5AKMlr7FvcsbHYnf5B21mOJoZd%2BY%3D\"}]}\nnel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\nserver: cloudflare\ncf-ray: a4b20ecd8b2ee115-GIG\nalt-svc: h3=\":443\"; ma=86400\n\n",
+    "body": {
+      "itens": [
+        {
+          "produtoId": "P005",
+          "nome": "Mochila Urbana 20L",
+          "precoUnitario": 100,
+          "quantidade": 2,
+          "total": 200
+        }
+      ],
+      "subtotal": 200,
+      "desconto": 20,
+      "frete": 19.9,
+      "freteGratis": false,
+      "valorFaltanteFreteGratis": 0,
+      "total": 199.9,
+      "cupom": {
+        "codigo": "BEMVINDO10",
+        "aplicado": true,
+        "mensagem": "Cupom aplicado: 10% de desconto nos produtos."
+      }
+    }
+  }
+}

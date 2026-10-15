@@ -1,6 +1,6 @@
 # Requisitos e ambiguidades
 
-Referência: VZS-142, **versão documentada 2.3.0**; versão implantada não verificada. Esta matriz é planejamento, não uma lista de requisitos aprovados. Observações manuais preliminares estão no [plano](plano-de-testes.md). Consulte os [cenários](cenarios.md) e a [rastreabilidade planejada](rastreabilidade.md); execuções e evidências serão associadas posteriormente.
+Referência: VZS-142, **versão documentada 2.3.0**; versão implantada não verificada. Esta matriz é planejamento, não uma lista de requisitos aprovados. Resultados humanos estão no [registro manual](execucoes/manual.md), separados da [investigação por agente](execucoes/agente-api.md). Consulte os [cenários](cenarios.md) e a [rastreabilidade planejada](rastreabilidade.md); execuções e evidências serão associadas posteriormente.
 
 ## Matriz CA01–CA11
 

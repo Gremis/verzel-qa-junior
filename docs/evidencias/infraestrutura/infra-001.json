@@ -1,0 +1,29 @@
+{
+  "id": "INFRA-001",
+  "responsavel": "Codex",
+  "modalidade": "automacao local de infraestrutura",
+  "comando": "npm run test:infra",
+  "inicio": "2026-10-15T22:14:51.118Z",
+  "fim": "2026-10-15T22:14:54.205Z",
+  "fusoDosTimestamps": "UTC",
+  "node": "v20.19.5",
+  "plataforma": "darwin",
+  "arquitetura": "arm64",
+  "dependencias": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "20.19.43",
+    "typescript": "7.0.2"
+  },
+  "navegador": "Chromium 156.0.8078.4 (build Playwright 1248)",
+  "pagina": "HTML local via page.setContent; sem acesso a loja",
+  "estatisticas": {
+    "startTime": "2026-10-15T22:14:51.118Z",
+    "duration": 3087.321,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "relatorioHtmlGerado": true,
+  "limite": "Nao cobre criterios de negocio; capturas de falha configuradas, mas nao exercitadas nesta execucao aprovada."
+}

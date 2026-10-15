@@ -1,0 +1,903 @@
+{
+  "responsavel": "Codex",
+  "modalidade": "automacao Playwright API",
+  "comando": "npx playwright test tests/cart-api.spec.ts",
+  "node": "v20.19.5",
+  "playwright": "1.64.1",
+  "workers": 1,
+  "retries": 0,
+  "versaoDocumentada": "2.3.0",
+  "versaoImplantada": "nao verificada",
+  "codigoSaida": 1,
+  "estatisticas": {
+    "startTime": "2026-10-15T22:26:42.734Z",
+    "duration": 3825.8300000000004,
+    "expected": 13,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  },
+  "totalChamadas": 21,
+  "execucoes": [
+    {
+      "id": "API-EXE-001",
+      "teste": "CT-001 API — D01: desconto nos produtos, sem desconto no frete",
+      "inicio": "2026-10-15T22:26:43.016Z",
+      "duracaoMs": 246,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 1
+              }
+            ],
+            "cupom": "BEMVINDO10"
+          },
+          "status": 200,
+          "resposta": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "nome": "Mochila Urbana 20L",
+                "precoUnitario": 100,
+                "quantidade": 1,
+                "total": 100
+              }
+            ],
+            "subtotal": 100,
+            "desconto": 10,
+            "frete": 19.9,
+            "freteGratis": false,
+            "valorFaltanteFreteGratis": 100,
+            "total": 109.9,
+            "cupom": {
+              "codigo": "BEMVINDO10",
+              "aplicado": true,
+              "mensagem": "Cupom aplicado: 10% de desconto nos produtos."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-002",
+      "teste": "CT-002 API — D02: frete grátis no limite com cupom",
+      "inicio": "2026-10-15T22:26:43.277Z",
+      "duracaoMs": 101,
+      "status": "failed",
+      "erros": [
+        "Error: expect(received).toMatchObject(expected)\n\n- Expected  - 3\n+ Received  + 3\n\n  Object {\n    \"desconto\": 20,\n-   \"frete\": 0,\n-   \"freteGratis\": true,\n+   \"frete\": 19.9,\n+   \"freteGratis\": false,\n    \"subtotal\": 200,\n-   \"total\": 180,\n+   \"total\": 199.9,\n    \"valorFaltanteFreteGratis\": 0,\n  }\n\n  34 |     const r = await post(request, info, '/api/carrinho/calcular', data);\n  35 |     expect(r.status).toBe(200);\n> 36 |     expect.soft(r.body).toMatchObject({ subtotal: c.subtotal, desconto: c.desconto, frete: c.frete, freteGratis: c.frete === 0, total: c.total, valorFaltanteFreteGratis: c.faltante });\n     |                         ^\n  37 |     expect(r.body.itens).toHaveLength(c.itens.length);\n  38 |     for (const item of c.itens) expect(r.body.itens).toEqual(expect.arrayContaining([expect.objectContaining(item)]));\n  39 |     if (c.cupom !== undefined) expect.soft(r.body.cupom).toMatchObject({ aplicado: true });\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/cart-api.spec.ts:36:25"
+      ],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 2
+              }
+            ],
+            "cupom": "BEMVINDO10"
+          },
+          "status": 200,
+          "resposta": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "nome": "Mochila Urbana 20L",
+                "precoUnitario": 100,
+                "quantidade": 2,
+                "total": 200
+              }
+            ],
+            "subtotal": 200,
+            "desconto": 20,
+            "frete": 19.9,
+            "freteGratis": false,
+            "valorFaltanteFreteGratis": 0,
+            "total": 199.9,
+            "cupom": {
+              "codigo": "BEMVINDO10",
+              "aplicado": true,
+              "mensagem": "Cupom aplicado: 10% de desconto nos produtos."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-003",
+      "teste": "CT-003 API — D03: frete pago abaixo do limite",
+      "inicio": "2026-10-15T22:26:43.613Z",
+      "duracaoMs": 148,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P002",
+                "quantidade": 1
+              },
+              {
+                "produtoId": "P001",
+                "quantidade": 1
+              }
+            ]
+          },
+          "status": 200,
+          "resposta": {
+            "itens": [
+              {
+                "produtoId": "P002",
+                "nome": "Calça Jeans Slim",
+                "precoUnitario": 139.9,
+                "quantidade": 1,
+                "total": 139.9
+              },
+              {
+                "produtoId": "P001",
+                "nome": "Camiseta Essencial",
+                "precoUnitario": 59.9,
+                "quantidade": 1,
+                "total": 59.9
+              }
+            ],
+            "subtotal": 199.8,
+            "desconto": 0,
+            "frete": 19.9,
+            "freteGratis": false,
+            "valorFaltanteFreteGratis": 0.2,
+            "total": 219.7,
+            "cupom": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-004",
+      "teste": "CT-004 API — D04: frete grátis no limite sem cupom",
+      "inicio": "2026-10-15T22:26:43.776Z",
+      "duracaoMs": 316,
+      "status": "failed",
+      "erros": [
+        "Error: expect(received).toMatchObject(expected)\n\n- Expected  - 3\n+ Received  + 3\n\n  Object {\n    \"desconto\": 0,\n-   \"frete\": 0,\n-   \"freteGratis\": true,\n+   \"frete\": 19.9,\n+   \"freteGratis\": false,\n    \"subtotal\": 200,\n-   \"total\": 200,\n+   \"total\": 219.9,\n    \"valorFaltanteFreteGratis\": 0,\n  }\n\n  34 |     const r = await post(request, info, '/api/carrinho/calcular', data);\n  35 |     expect(r.status).toBe(200);\n> 36 |     expect.soft(r.body).toMatchObject({ subtotal: c.subtotal, desconto: c.desconto, frete: c.frete, freteGratis: c.frete === 0, total: c.total, valorFaltanteFreteGratis: c.faltante });\n     |                         ^\n  37 |     expect(r.body.itens).toHaveLength(c.itens.length);\n  38 |     for (const item of c.itens) expect(r.body.itens).toEqual(expect.arrayContaining([expect.objectContaining(item)]));\n  39 |     if (c.cupom !== undefined) expect.soft(r.body.cupom).toMatchObject({ aplicado: true });\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/cart-api.spec.ts:36:25"
+      ],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 2
+              }
+            ]
+          },
+          "status": 200,
+          "resposta": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "nome": "Mochila Urbana 20L",
+                "precoUnitario": 100,
+                "quantidade": 2,
+                "total": 200
+              }
+            ],
+            "subtotal": 200,
+            "desconto": 0,
+            "frete": 19.9,
+            "freteGratis": false,
+            "valorFaltanteFreteGratis": 0,
+            "total": 219.9,
+            "cupom": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-005",
+      "teste": "CT-005 API — D06: frete considera subtotal antes do desconto",
+      "inicio": "2026-10-15T22:26:44.330Z",
+      "duracaoMs": 137,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 1
+              },
+              {
+                "produtoId": "P008",
+                "quantidade": 1
+              },
+              {
+                "produtoId": "P001",
+                "quantidade": 1
+              }
+            ],
+            "cupom": "BEMVINDO10"
+          },
+          "status": 200,
+          "resposta": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "nome": "Mochila Urbana 20L",
+                "precoUnitario": 100,
+                "quantidade": 1,
+                "total": 100
+              },
+              {
+                "produtoId": "P008",
+                "nome": "Garrafa Térmica 750ml",
+                "precoUnitario": 50,
+                "quantidade": 1,
+                "total": 50
+              },
+              {
+                "produtoId": "P001",
+                "nome": "Camiseta Essencial",
+                "precoUnitario": 59.9,
+                "quantidade": 1,
+                "total": 59.9
+              }
+            ],
+            "subtotal": 209.9,
+            "desconto": 20.99,
+            "frete": 0,
+            "freteGratis": true,
+            "valorFaltanteFreteGratis": 0,
+            "total": 188.91,
+            "cupom": {
+              "codigo": "BEMVINDO10",
+              "aplicado": true,
+              "mensagem": "Cupom aplicado: 10% de desconto nos produtos."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-006",
+      "teste": "CT-006 API — minúsculas",
+      "inicio": "2026-10-15T22:26:44.483Z",
+      "duracaoMs": 159,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 1
+              }
+            ],
+            "cupom": "bemvindo10"
+          },
+          "status": 200,
+          "resposta": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "nome": "Mochila Urbana 20L",
+                "precoUnitario": 100,
+                "quantidade": 1,
+                "total": 100
+              }
+            ],
+            "subtotal": 100,
+            "desconto": 10,
+            "frete": 19.9,
+            "freteGratis": false,
+            "valorFaltanteFreteGratis": 100,
+            "total": 109.9,
+            "cupom": {
+              "codigo": "BEMVINDO10",
+              "aplicado": true,
+              "mensagem": "Cupom aplicado: 10% de desconto nos produtos."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-007",
+      "teste": "CT-006 API — caixa mista e espaços externos",
+      "inicio": "2026-10-15T22:26:44.648Z",
+      "duracaoMs": 146,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 1
+              }
+            ],
+            "cupom": "  BeMvInDo10  "
+          },
+          "status": 200,
+          "resposta": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "nome": "Mochila Urbana 20L",
+                "precoUnitario": 100,
+                "quantidade": 1,
+                "total": 100
+              }
+            ],
+            "subtotal": 100,
+            "desconto": 10,
+            "frete": 19.9,
+            "freteGratis": false,
+            "valorFaltanteFreteGratis": 100,
+            "total": 109.9,
+            "cupom": {
+              "codigo": "BEMVINDO10",
+              "aplicado": true,
+              "mensagem": "Cupom aplicado: 10% de desconto nos produtos."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-008",
+      "teste": "CT-007 / CT-014 API — NAOEXISTE: cálculo 200, pedido 422",
+      "inicio": "2026-10-15T22:26:44.800Z",
+      "duracaoMs": 130,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 1
+              }
+            ],
+            "cupom": "NAOEXISTE"
+          },
+          "status": 200,
+          "resposta": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "nome": "Mochila Urbana 20L",
+                "precoUnitario": 100,
+                "quantidade": 1,
+                "total": 100
+              }
+            ],
+            "subtotal": 100,
+            "desconto": 0,
+            "frete": 19.9,
+            "freteGratis": false,
+            "valorFaltanteFreteGratis": 100,
+            "total": 119.9,
+            "cupom": {
+              "codigo": "NAOEXISTE",
+              "aplicado": false,
+              "mensagem": "Cupom inválido."
+            }
+          }
+        },
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 1
+              }
+            ],
+            "cupom": "NAOEXISTE",
+            "cliente": {
+              "nome": "Maria Silva",
+              "email": "maria@example.com",
+              "cep": "01310-100"
+            }
+          },
+          "status": 422,
+          "resposta": {
+            "erro": {
+              "codigo": "CUPOM_INVALIDO",
+              "mensagem": "Cupom inválido.",
+              "campo": "cupom"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-009",
+      "teste": "CT-007 / CT-014 API — VERAO2026: cálculo 200, pedido 422",
+      "inicio": "2026-10-15T22:26:44.937Z",
+      "duracaoMs": 149,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 1
+              }
+            ],
+            "cupom": "VERAO2026"
+          },
+          "status": 200,
+          "resposta": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "nome": "Mochila Urbana 20L",
+                "precoUnitario": 100,
+                "quantidade": 1,
+                "total": 100
+              }
+            ],
+            "subtotal": 100,
+            "desconto": 0,
+            "frete": 19.9,
+            "freteGratis": false,
+            "valorFaltanteFreteGratis": 100,
+            "total": 119.9,
+            "cupom": {
+              "codigo": "VERAO2026",
+              "aplicado": false,
+              "mensagem": "Cupom expirado."
+            }
+          }
+        },
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 1
+              }
+            ],
+            "cupom": "VERAO2026",
+            "cliente": {
+              "nome": "Maria Silva",
+              "email": "maria@example.com",
+              "cep": "01310-100"
+            }
+          },
+          "status": 422,
+          "resposta": {
+            "erro": {
+              "codigo": "CUPOM_EXPIRADO",
+              "mensagem": "Cupom expirado.",
+              "campo": "cupom"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-010",
+      "teste": "CT-012 API — quantidade 1 no cálculo e pedido",
+      "inicio": "2026-10-15T22:26:45.090Z",
+      "duracaoMs": 213,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P001",
+                "quantidade": 1
+              }
+            ]
+          },
+          "status": 200,
+          "resposta": {
+            "itens": [
+              {
+                "produtoId": "P001",
+                "nome": "Camiseta Essencial",
+                "precoUnitario": 59.9,
+                "quantidade": 1,
+                "total": 59.9
+              }
+            ],
+            "subtotal": 59.9,
+            "desconto": 0,
+            "frete": 19.9,
+            "freteGratis": false,
+            "valorFaltanteFreteGratis": 140.1,
+            "total": 79.8,
+            "cupom": null
+          }
+        },
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P001",
+                "quantidade": 1
+              }
+            ],
+            "cliente": {
+              "nome": "Maria Silva",
+              "email": "maria@example.com",
+              "cep": "01310-100"
+            }
+          },
+          "status": 201,
+          "resposta": {
+            "numero": "VZ-073350",
+            "criadoEm": "2026-10-15T22:26:42.438Z",
+            "cliente": {
+              "nome": "Maria Silva",
+              "email": "maria@example.com",
+              "cep": "01310100"
+            },
+            "itens": [
+              {
+                "produtoId": "P001",
+                "nome": "Camiseta Essencial",
+                "precoUnitario": 59.9,
+                "quantidade": 1,
+                "total": 59.9
+              }
+            ],
+            "subtotal": 59.9,
+            "desconto": 0,
+            "frete": 19.9,
+            "freteGratis": false,
+            "valorFaltanteFreteGratis": 140.1,
+            "total": 79.8,
+            "cupom": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-011",
+      "teste": "CT-012 API — quantidade 5 no cálculo e pedido",
+      "inicio": "2026-10-15T22:26:45.308Z",
+      "duracaoMs": 283,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P001",
+                "quantidade": 5
+              }
+            ]
+          },
+          "status": 200,
+          "resposta": {
+            "itens": [
+              {
+                "produtoId": "P001",
+                "nome": "Camiseta Essencial",
+                "precoUnitario": 59.9,
+                "quantidade": 5,
+                "total": 299.5
+              }
+            ],
+            "subtotal": 299.5,
+            "desconto": 0,
+            "frete": 0,
+            "freteGratis": true,
+            "valorFaltanteFreteGratis": 0,
+            "total": 299.5,
+            "cupom": null
+          }
+        },
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P001",
+                "quantidade": 5
+              }
+            ],
+            "cliente": {
+              "nome": "Maria Silva",
+              "email": "maria@example.com",
+              "cep": "01310-100"
+            }
+          },
+          "status": 201,
+          "resposta": {
+            "numero": "VZ-800805",
+            "criadoEm": "2026-10-15T22:26:42.713Z",
+            "cliente": {
+              "nome": "Maria Silva",
+              "email": "maria@example.com",
+              "cep": "01310100"
+            },
+            "itens": [
+              {
+                "produtoId": "P001",
+                "nome": "Camiseta Essencial",
+                "precoUnitario": 59.9,
+                "quantidade": 5,
+                "total": 299.5
+              }
+            ],
+            "subtotal": 299.5,
+            "desconto": 0,
+            "frete": 0,
+            "freteGratis": true,
+            "valorFaltanteFreteGratis": 0,
+            "total": 299.5,
+            "cupom": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-012",
+      "teste": "CT-012 API — quantidade 6 no cálculo e pedido",
+      "inicio": "2026-10-15T22:26:45.597Z",
+      "duracaoMs": 211,
+      "status": "failed",
+      "erros": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 422\nReceived: 200\n\n  63 |       const r = await post(request, info, endpoint, data);\n  64 |       if (quantidade === 6) {\n> 65 |         expect.soft(r.status).toBe(422);\n     |                               ^\n  66 |         expect.soft(r.body.erro).toMatchObject({ codigo: 'QUANTIDADE_MAXIMA_EXCEDIDA', mensagem: expect.any(String) });\n  67 |       } else {\n  68 |         expect.soft(r.status).toBe(endpoint === '/api/pedidos' ? 201 : 200);\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/cart-api.spec.ts:65:31",
+        "Error: expect(received).toMatchObject(expected)\n\nMatcher error: received value must be a non-null object\n\nReceived has value: undefined\n\n  64 |       if (quantidade === 6) {\n  65 |         expect.soft(r.status).toBe(422);\n> 66 |         expect.soft(r.body.erro).toMatchObject({ codigo: 'QUANTIDADE_MAXIMA_EXCEDIDA', mensagem: expect.any(String) });\n     |                                  ^\n  67 |       } else {\n  68 |         expect.soft(r.status).toBe(endpoint === '/api/pedidos' ? 201 : 200);\n  69 |         const expected = quantidade === 1 ? { subtotal: 59.9, desconto: 0, frete: 19.9, total: 79.8, freteGratis: false, valorFaltanteFreteGratis: 140.1 } : { subtotal: 299.5, desconto: 0, frete: 0, total: 299.5, freteGratis: true, valorFaltanteFreteGratis: 0 };\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/cart-api.spec.ts:66:34",
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 422\nReceived: 201\n\n  63 |       const r = await post(request, info, endpoint, data);\n  64 |       if (quantidade === 6) {\n> 65 |         expect.soft(r.status).toBe(422);\n     |                               ^\n  66 |         expect.soft(r.body.erro).toMatchObject({ codigo: 'QUANTIDADE_MAXIMA_EXCEDIDA', mensagem: expect.any(String) });\n  67 |       } else {\n  68 |         expect.soft(r.status).toBe(endpoint === '/api/pedidos' ? 201 : 200);\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/cart-api.spec.ts:65:31",
+        "Error: expect(received).toMatchObject(expected)\n\nMatcher error: received value must be a non-null object\n\nReceived has value: undefined\n\n  64 |       if (quantidade === 6) {\n  65 |         expect.soft(r.status).toBe(422);\n> 66 |         expect.soft(r.body.erro).toMatchObject({ codigo: 'QUANTIDADE_MAXIMA_EXCEDIDA', mensagem: expect.any(String) });\n     |                                  ^\n  67 |       } else {\n  68 |         expect.soft(r.status).toBe(endpoint === '/api/pedidos' ? 201 : 200);\n  69 |         const expected = quantidade === 1 ? { subtotal: 59.9, desconto: 0, frete: 19.9, total: 79.8, freteGratis: false, valorFaltanteFreteGratis: 140.1 } : { subtotal: 299.5, desconto: 0, frete: 0, total: 299.5, freteGratis: true, valorFaltanteFreteGratis: 0 };\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/cart-api.spec.ts:66:34"
+      ],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P001",
+                "quantidade": 6
+              }
+            ]
+          },
+          "status": 200,
+          "resposta": {
+            "itens": [
+              {
+                "produtoId": "P001",
+                "nome": "Camiseta Essencial",
+                "precoUnitario": 59.9,
+                "quantidade": 6,
+                "total": 359.4
+              }
+            ],
+            "subtotal": 359.4,
+            "desconto": 0,
+            "frete": 0,
+            "freteGratis": true,
+            "valorFaltanteFreteGratis": 0,
+            "total": 359.4,
+            "cupom": null
+          }
+        },
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P001",
+                "quantidade": 6
+              }
+            ],
+            "cliente": {
+              "nome": "Maria Silva",
+              "email": "maria@example.com",
+              "cep": "01310-100"
+            }
+          },
+          "status": 201,
+          "resposta": {
+            "numero": "VZ-105873",
+            "criadoEm": "2026-10-15T22:26:42.940Z",
+            "cliente": {
+              "nome": "Maria Silva",
+              "email": "maria@example.com",
+              "cep": "01310100"
+            },
+            "itens": [
+              {
+                "produtoId": "P001",
+                "nome": "Camiseta Essencial",
+                "precoUnitario": 59.9,
+                "quantidade": 6,
+                "total": 359.4
+              }
+            ],
+            "subtotal": 359.4,
+            "desconto": 0,
+            "frete": 0,
+            "freteGratis": true,
+            "valorFaltanteFreteGratis": 0,
+            "total": 359.4,
+            "cupom": null
+          }
+        }
+      ],
+      "trace": "ct-012-quantidade-6-trace.zip"
+    },
+    {
+      "id": "API-EXE-013",
+      "teste": "CT-019 API — lista vazia",
+      "inicio": "2026-10-15T22:26:46.104Z",
+      "duracaoMs": 108,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": []
+          },
+          "status": 422,
+          "resposta": {
+            "erro": {
+              "codigo": "ITENS_OBRIGATORIOS",
+              "mensagem": "Informe ao menos um item.",
+              "campo": "itens"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-014",
+      "teste": "CT-019 API — produto duplicado",
+      "inicio": "2026-10-15T22:26:46.228Z",
+      "duracaoMs": 131,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 1
+              },
+              {
+                "produtoId": "P005",
+                "quantidade": 1
+              }
+            ]
+          },
+          "status": 422,
+          "resposta": {
+            "erro": {
+              "codigo": "ITEM_DUPLICADO",
+              "mensagem": "O produto P005 aparece mais de uma vez.",
+              "campo": "itens[1].produtoId"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-015",
+      "teste": "CT-019 API — quantidade fracionária",
+      "inicio": "2026-10-15T22:26:46.364Z",
+      "duracaoMs": 86,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 1.5
+              }
+            ]
+          },
+          "status": 422,
+          "resposta": {
+            "erro": {
+              "codigo": "QUANTIDADE_INVALIDA",
+              "mensagem": "A quantidade deve ser um número inteiro maior ou igual a 1.",
+              "campo": "itens[0].quantidade"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "API-EXE-016",
+      "teste": "CT-016 API — rejeitar nome sem sobrenome",
+      "inicio": "2026-10-15T22:26:46.457Z",
+      "duracaoMs": 87,
+      "status": "passed",
+      "erros": [],
+      "chamadas": [
+        {
+          "metodo": "POST",
+          "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+          "requisicao": {
+            "itens": [
+              {
+                "produtoId": "P005",
+                "quantidade": 1
+              }
+            ],
+            "cliente": {
+              "nome": "Maria",
+              "email": "maria@example.com",
+              "cep": "01310-100"
+            }
+          },
+          "status": 422,
+          "resposta": {
+            "erro": {
+              "codigo": "DADOS_INVALIDOS",
+              "mensagem": "Existem campos inválidos no pedido.",
+              "campos": [
+                {
+                  "campo": "cliente.nome",
+                  "mensagem": "Informe nome e sobrenome."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

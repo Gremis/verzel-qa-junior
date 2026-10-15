@@ -1,0 +1,40 @@
+{
+  "responsavel": "Codex",
+  "modalidade": "reproducao direcionada via curl",
+  "registradoEm": "2026-10-15T22:27:57.662267+00:00",
+  "notaHorario": "horario do registro; inicio/fim da chamada nao capturados",
+  "requisicao": {
+    "metodo": "POST",
+    "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+    "body": {
+      "itens": [
+        {
+          "produtoId": "P001",
+          "quantidade": 6
+        }
+      ]
+    }
+  },
+  "resposta": {
+    "status": 200,
+    "headers": "HTTP/2 200 \ndate: Thu, 15 Oct 2026 22:27:10 GMT\ncontent-type: application/json; charset=utf-8\ncontent-length: 225\naccess-control-allow-origin: *\naccess-control-allow-headers: content-type\naccess-control-allow-methods: GET, POST, OPTIONS\nreport-to: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=WnqGznqgzpWmvGAmja4S4IwYA%2BsA3PDf5MlxjtrxoS%2BOOrR%2BK0QZb%2BjPGqySaQ1G1iqXKm%2BzEBT8kUtlPfYzd%2FPIlwnigSIGqyG1tIz7OCdfcM4ux%2BT%2FQpE%2FAaelu4FEqv%2BJ0r3nIPk7LqoMdgFP9esbP1Yh4US8N0%2FVrfwrEdKHXkqX1DuM5M%2B%2Bh1Q%3D\"}]}\nnel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\nserver: cloudflare\ncf-ray: a4b23fe64e67b4d9-CWB\nalt-svc: h3=\":443\"; ma=86400\n\n",
+    "body": {
+      "itens": [
+        {
+          "produtoId": "P001",
+          "nome": "Camiseta Essencial",
+          "precoUnitario": 59.9,
+          "quantidade": 6,
+          "total": 359.4
+        }
+      ],
+      "subtotal": 359.4,
+      "desconto": 0,
+      "frete": 0,
+      "freteGratis": true,
+      "valorFaltanteFreteGratis": 0,
+      "total": 359.4,
+      "cupom": null
+    }
+  }
+}

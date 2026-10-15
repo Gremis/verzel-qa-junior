@@ -1,0 +1,19 @@
+{
+  "metodo": "POST",
+  "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos",
+  "requisicao": {
+    "itens": [
+      {
+        "produtoId": "P001",
+        "quantidade": 1
+      }
+    ],
+    "cliente": {
+      "nome": "Maria Silva",
+      "email": "maria@example.com",
+      "cep": "01310-100"
+    }
+  },
+  "status": 201,
+  "resposta": "{\"numero\":\"VZ-623549\",\"criadoEm\":\"2026-10-15T22:42:39.813Z\",\"cliente\":{\"nome\":\"Maria Silva\",\"email\":\"maria@example.com\",\"cep\":\"01310100\"},\"itens\":[{\"produtoId\":\"P001\",\"nome\":\"Camiseta Essencial\",\"precoUnitario\":59.9,\"quantidade\":1,\"total\":59.9}],\"subtotal\":59.9,\"desconto\":0,\"frete\":19.9,\"freteGratis\":false,\"valorFaltanteFreteGratis\":140.1,\"total\":79.8,\"cupom\":null}"
+}

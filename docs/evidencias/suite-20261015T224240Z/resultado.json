@@ -1,0 +1,466 @@
+{
+  "id": "suite-20261015T224240Z",
+  "responsavel": "Codex",
+  "modalidade": "automacao Playwright; execucoes humanas separadas",
+  "comando": "npm test",
+  "checagemTipos": "npm run typecheck: aprovada antes da execucao",
+  "codigoSaida": 1,
+  "estatisticas": {
+    "startTime": "2026-10-15T22:42:40.189Z",
+    "duration": 17767.259,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "fim": "2026-10-15T22:42:57.956Z",
+  "fusoTimestamps": "UTC; relatorio exibe America/Sao_Paulo",
+  "node": "v20.19.5",
+  "playwright": "1.64.1",
+  "browser": {
+    "name": "chromium",
+    "revision": "1248",
+    "installByDefault": true,
+    "browserVersion": "156.0.8078.4",
+    "title": "Chrome for Testing"
+  },
+  "os": {
+    "platform": "darwin",
+    "release": "25.6.0",
+    "arch": "arm64"
+  },
+  "baseURL": "https://verzel-store.qa-test-verzel-store.workers.dev",
+  "versaoDocumentada": "2.3.0",
+  "versaoImplantada": "nao verificada",
+  "workers": 1,
+  "retries": 0,
+  "errosForaDosTestes": [],
+  "execucoes": [
+    {
+      "id": "SUITE-01",
+      "titulo": "CT-001 API — D01: desconto nos produtos, sem desconto no frete",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:40.459Z",
+      "duracaoMs": 219,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-01-anexo-1.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-02",
+      "titulo": "CT-002 API — D02: frete grátis no limite com cupom",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "failed",
+      "inicio": "2026-10-15T22:42:40.695Z",
+      "duracaoMs": 202,
+      "erros": [
+        "Error: expect(received).toMatchObject(expected)\n\n- Expected  - 3\n+ Received  + 3\n\n  Object {\n    \"desconto\": 20,\n-   \"frete\": 0,\n-   \"freteGratis\": true,\n+   \"frete\": 19.9,\n+   \"freteGratis\": false,\n    \"subtotal\": 200,\n-   \"total\": 180,\n+   \"total\": 199.9,\n    \"valorFaltanteFreteGratis\": 0,\n  }\n\n  34 |     const r = await post(request, info, '/api/carrinho/calcular', data);\n  35 |     expect(r.status).toBe(200);\n> 36 |     expect.soft(r.body).toMatchObject({ subtotal: c.subtotal, desconto: c.desconto, frete: c.frete, freteGratis: c.frete === 0, total: c.total, valorFaltanteFreteGratis: c.faltante });\n     |                         ^\n  37 |     expect(r.body.itens).toHaveLength(c.itens.length);\n  38 |     for (const item of c.itens) expect(r.body.itens).toEqual(expect.arrayContaining([expect.objectContaining(item)]));\n  39 |     if (c.cupom !== undefined) expect.soft(r.body.cupom).toMatchObject({ aplicado: true });\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/cart-api.spec.ts:36:25"
+      ],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-02-anexo-1.json",
+          "tipo": "application/json"
+        },
+        {
+          "nome": "error-context",
+          "arquivo": "teste-02-anexo-2.md",
+          "tipo": "text/markdown"
+        },
+        {
+          "nome": "trace",
+          "arquivo": "teste-02-anexo-3.zip",
+          "tipo": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-03",
+      "titulo": "CT-003 API — D03: frete pago abaixo do limite",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:41.159Z",
+      "duracaoMs": 156,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-03-anexo-1.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-04",
+      "titulo": "CT-004 API — D04: frete grátis no limite sem cupom",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "failed",
+      "inicio": "2026-10-15T22:42:41.332Z",
+      "duracaoMs": 132,
+      "erros": [
+        "Error: expect(received).toMatchObject(expected)\n\n- Expected  - 3\n+ Received  + 3\n\n  Object {\n    \"desconto\": 0,\n-   \"frete\": 0,\n-   \"freteGratis\": true,\n+   \"frete\": 19.9,\n+   \"freteGratis\": false,\n    \"subtotal\": 200,\n-   \"total\": 200,\n+   \"total\": 219.9,\n    \"valorFaltanteFreteGratis\": 0,\n  }\n\n  34 |     const r = await post(request, info, '/api/carrinho/calcular', data);\n  35 |     expect(r.status).toBe(200);\n> 36 |     expect.soft(r.body).toMatchObject({ subtotal: c.subtotal, desconto: c.desconto, frete: c.frete, freteGratis: c.frete === 0, total: c.total, valorFaltanteFreteGratis: c.faltante });\n     |                         ^\n  37 |     expect(r.body.itens).toHaveLength(c.itens.length);\n  38 |     for (const item of c.itens) expect(r.body.itens).toEqual(expect.arrayContaining([expect.objectContaining(item)]));\n  39 |     if (c.cupom !== undefined) expect.soft(r.body.cupom).toMatchObject({ aplicado: true });\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/cart-api.spec.ts:36:25"
+      ],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-04-anexo-1.json",
+          "tipo": "application/json"
+        },
+        {
+          "nome": "error-context",
+          "arquivo": "teste-04-anexo-2.md",
+          "tipo": "text/markdown"
+        },
+        {
+          "nome": "trace",
+          "arquivo": "teste-04-anexo-3.zip",
+          "tipo": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-05",
+      "titulo": "CT-005 API — D06: frete considera subtotal antes do desconto",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:41.767Z",
+      "duracaoMs": 126,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-05-anexo-1.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-06",
+      "titulo": "CT-006 API — minúsculas",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:41.911Z",
+      "duracaoMs": 108,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-06-anexo-1.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-07",
+      "titulo": "CT-006 API — caixa mista e espaços externos",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:42.025Z",
+      "duracaoMs": 120,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-07-anexo-1.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-08",
+      "titulo": "CT-007 / CT-014 API — NAOEXISTE: cálculo 200, pedido 422",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:42.153Z",
+      "duracaoMs": 152,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-08-anexo-1.json",
+          "tipo": "application/json"
+        },
+        {
+          "nome": "HTTP-2",
+          "arquivo": "teste-08-anexo-2.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-09",
+      "titulo": "CT-007 / CT-014 API — VERAO2026: cálculo 200, pedido 422",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:42.313Z",
+      "duracaoMs": 120,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-09-anexo-1.json",
+          "tipo": "application/json"
+        },
+        {
+          "nome": "HTTP-2",
+          "arquivo": "teste-09-anexo-2.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-10",
+      "titulo": "CT-012 API — quantidade 1 no cálculo e pedido",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:42.439Z",
+      "duracaoMs": 249,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-10-anexo-1.json",
+          "tipo": "application/json"
+        },
+        {
+          "nome": "HTTP-2",
+          "arquivo": "teste-10-anexo-2.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-11",
+      "titulo": "CT-012 API — quantidade 5 no cálculo e pedido",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:42.691Z",
+      "duracaoMs": 165,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-11-anexo-1.json",
+          "tipo": "application/json"
+        },
+        {
+          "nome": "HTTP-2",
+          "arquivo": "teste-11-anexo-2.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-12",
+      "titulo": "CT-012 API — quantidade 6 no cálculo e pedido",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "failed",
+      "inicio": "2026-10-15T22:42:42.863Z",
+      "duracaoMs": 168,
+      "erros": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 422\nReceived: 200\n\n  63 |       const r = await post(request, info, endpoint, data);\n  64 |       if (quantidade === 6) {\n> 65 |         expect.soft(r.status).toBe(422);\n     |                               ^\n  66 |         expect.soft(r.body.erro).toMatchObject({ codigo: 'QUANTIDADE_MAXIMA_EXCEDIDA', mensagem: expect.any(String) });\n  67 |       } else {\n  68 |         expect.soft(r.status).toBe(endpoint === '/api/pedidos' ? 201 : 200);\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/cart-api.spec.ts:65:31",
+        "Error: expect(received).toMatchObject(expected)\n\nMatcher error: received value must be a non-null object\n\nReceived has value: undefined\n\n  64 |       if (quantidade === 6) {\n  65 |         expect.soft(r.status).toBe(422);\n> 66 |         expect.soft(r.body.erro).toMatchObject({ codigo: 'QUANTIDADE_MAXIMA_EXCEDIDA', mensagem: expect.any(String) });\n     |                                  ^\n  67 |       } else {\n  68 |         expect.soft(r.status).toBe(endpoint === '/api/pedidos' ? 201 : 200);\n  69 |         const expected = quantidade === 1 ? { subtotal: 59.9, desconto: 0, frete: 19.9, total: 79.8, freteGratis: false, valorFaltanteFreteGratis: 140.1 } : { subtotal: 299.5, desconto: 0, frete: 0, total: 299.5, freteGratis: true, valorFaltanteFreteGratis: 0 };\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/cart-api.spec.ts:66:34",
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 422\nReceived: 201\n\n  63 |       const r = await post(request, info, endpoint, data);\n  64 |       if (quantidade === 6) {\n> 65 |         expect.soft(r.status).toBe(422);\n     |                               ^\n  66 |         expect.soft(r.body.erro).toMatchObject({ codigo: 'QUANTIDADE_MAXIMA_EXCEDIDA', mensagem: expect.any(String) });\n  67 |       } else {\n  68 |         expect.soft(r.status).toBe(endpoint === '/api/pedidos' ? 201 : 200);\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/cart-api.spec.ts:65:31",
+        "Error: expect(received).toMatchObject(expected)\n\nMatcher error: received value must be a non-null object\n\nReceived has value: undefined\n\n  64 |       if (quantidade === 6) {\n  65 |         expect.soft(r.status).toBe(422);\n> 66 |         expect.soft(r.body.erro).toMatchObject({ codigo: 'QUANTIDADE_MAXIMA_EXCEDIDA', mensagem: expect.any(String) });\n     |                                  ^\n  67 |       } else {\n  68 |         expect.soft(r.status).toBe(endpoint === '/api/pedidos' ? 201 : 200);\n  69 |         const expected = quantidade === 1 ? { subtotal: 59.9, desconto: 0, frete: 19.9, total: 79.8, freteGratis: false, valorFaltanteFreteGratis: 140.1 } : { subtotal: 299.5, desconto: 0, frete: 0, total: 299.5, freteGratis: true, valorFaltanteFreteGratis: 0 };\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/cart-api.spec.ts:66:34"
+      ],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-12-anexo-1.json",
+          "tipo": "application/json"
+        },
+        {
+          "nome": "HTTP-2",
+          "arquivo": "teste-12-anexo-2.json",
+          "tipo": "application/json"
+        },
+        {
+          "nome": "error-context",
+          "arquivo": "teste-12-anexo-3.md",
+          "tipo": "text/markdown"
+        },
+        {
+          "nome": "trace",
+          "arquivo": "teste-12-anexo-4.zip",
+          "tipo": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-13",
+      "titulo": "CT-019 API — lista vazia",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:43.363Z",
+      "duracaoMs": 140,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-13-anexo-1.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-14",
+      "titulo": "CT-019 API — produto duplicado",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:43.524Z",
+      "duracaoMs": 82,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-14-anexo-1.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-15",
+      "titulo": "CT-019 API — quantidade fracionária",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:43.611Z",
+      "duracaoMs": 149,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-15-anexo-1.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-16",
+      "titulo": "CT-016 API — rejeitar nome sem sobrenome",
+      "arquivo": "cart-api.spec.ts",
+      "modalidade": "API",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:43.765Z",
+      "duracaoMs": 167,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "HTTP-1",
+          "arquivo": "teste-16-anexo-1.json",
+          "tipo": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-17",
+      "titulo": "CT-001 — aplicar 10% nos produtos sem descontar o frete",
+      "arquivo": "coupon-shipping.spec.ts",
+      "modalidade": "UI",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:43.942Z",
+      "duracaoMs": 929,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "CT-001-resumo",
+          "arquivo": "teste-17-anexo-1.png",
+          "tipo": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-18",
+      "titulo": "CT-005 — calcular frete pelo subtotal anterior ao desconto",
+      "arquivo": "coupon-shipping.spec.ts",
+      "modalidade": "UI",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:44.977Z",
+      "duracaoMs": 1082,
+      "erros": [],
+      "anexos": [
+        {
+          "nome": "CT-005-resumo",
+          "arquivo": "teste-18-anexo-1.png",
+          "tipo": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-19",
+      "titulo": "CT-002 — manter frete grátis em exatamente R$ 200 com cupom",
+      "arquivo": "coupon-shipping.spec.ts",
+      "modalidade": "UI",
+      "status": "failed",
+      "inicio": "2026-10-15T22:42:46.065Z",
+      "duracaoMs": 11320,
+      "erros": [
+        "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  getByRole('region', { name: 'Resumo do pedido', exact: true }).locator('[data-valor=\"frete\"]')\nExpected: \"Grátis\"\nReceived: \"R$ 19,90\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"soft toHaveText\" getByRole('region', { name: 'Resumo do pedido', exact: true }).locator('[data-valor=\"frete\"]') with timeout 5000ms\n  - waiting for getByRole('region', { name: 'Resumo do pedido', exact: true }).locator('[data-valor=\"frete\"]')\n    14 × locator resolved to <dd data-valor=\"frete\">R$ 19,90</dd>\n       - unexpected value \"R$ 19,90\"\n\n\n   95 |     await expect(summary.locator('[data-valor=\"subtotal\"]')).toHaveText('R$ 200,00');\n   96 |     await expect(summary.locator('[data-valor=\"desconto\"]')).toHaveText('- R$ 20,00');\n>  97 |     await expect.soft(summary.locator('[data-valor=\"frete\"]')).toHaveText('Grátis');\n      |                                                                ^\n   98 |     await expect.soft(summary.locator('[data-valor=\"total\"]')).toHaveText('R$ 180,00');\n   99 |     await testInfo.attach('CT-002-resumo', { body: await page.screenshot(), contentType: 'image/png' });\n  100 |   });\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/coupon-shipping.spec.ts:97:64\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/coupon-shipping.spec.ts:93:3",
+        "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  getByRole('region', { name: 'Resumo do pedido', exact: true }).locator('[data-valor=\"total\"]')\nExpected: \"R$ 180,00\"\nReceived: \"R$ 199,90\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"soft toHaveText\" getByRole('region', { name: 'Resumo do pedido', exact: true }).locator('[data-valor=\"total\"]') with timeout 5000ms\n  - waiting for getByRole('region', { name: 'Resumo do pedido', exact: true }).locator('[data-valor=\"total\"]')\n    14 × locator resolved to <dd data-valor=\"total\">R$ 199,90</dd>\n       - unexpected value \"R$ 199,90\"\n\n\n   96 |     await expect(summary.locator('[data-valor=\"desconto\"]')).toHaveText('- R$ 20,00');\n   97 |     await expect.soft(summary.locator('[data-valor=\"frete\"]')).toHaveText('Grátis');\n>  98 |     await expect.soft(summary.locator('[data-valor=\"total\"]')).toHaveText('R$ 180,00');\n      |                                                                ^\n   99 |     await testInfo.attach('CT-002-resumo', { body: await page.screenshot(), contentType: 'image/png' });\n  100 |   });\n  101 | });\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/coupon-shipping.spec.ts:98:64\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/coupon-shipping.spec.ts:93:3"
+      ],
+      "anexos": [
+        {
+          "nome": "CT-002-calculo-observado",
+          "arquivo": "teste-19-anexo-1.json",
+          "tipo": "application/json"
+        },
+        {
+          "nome": "CT-002-resumo",
+          "arquivo": "teste-19-anexo-2.png",
+          "tipo": "image/png"
+        },
+        {
+          "nome": "screenshot",
+          "arquivo": "teste-19-anexo-3.png",
+          "tipo": "image/png"
+        },
+        {
+          "nome": "video",
+          "arquivo": "teste-19-anexo-4.webm",
+          "tipo": "video/webm"
+        },
+        {
+          "nome": "error-context",
+          "arquivo": "teste-19-anexo-5.md",
+          "tipo": "text/markdown"
+        },
+        {
+          "nome": "trace",
+          "arquivo": "teste-19-anexo-6.zip",
+          "tipo": "application/zip"
+        }
+      ]
+    },
+    {
+      "id": "SUITE-20",
+      "titulo": "INFRA-001 — iniciar navegador, interagir e verificar resultado local",
+      "arquivo": "infrastructure.spec.ts",
+      "modalidade": "infraestrutura",
+      "status": "passed",
+      "inicio": "2026-10-15T22:42:57.671Z",
+      "duracaoMs": 175,
+      "erros": [],
+      "anexos": []
+    }
+  ]
+}

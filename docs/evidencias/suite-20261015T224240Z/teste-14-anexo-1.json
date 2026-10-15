@@ -1,0 +1,18 @@
+{
+  "metodo": "POST",
+  "url": "https://verzel-store.qa-test-verzel-store.workers.dev/api/carrinho/calcular",
+  "requisicao": {
+    "itens": [
+      {
+        "produtoId": "P005",
+        "quantidade": 1
+      },
+      {
+        "produtoId": "P005",
+        "quantidade": 1
+      }
+    ]
+  },
+  "status": 422,
+  "resposta": "{\"erro\":{\"codigo\":\"ITEM_DUPLICADO\",\"mensagem\":\"O produto P005 aparece mais de uma vez.\",\"campo\":\"itens[1].produtoId\"}}"
+}

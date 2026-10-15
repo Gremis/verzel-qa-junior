@@ -1,0 +1,95 @@
+{
+  "versaoDocumentada": "2.3.0",
+  "versaoImplantada": "nao verificada",
+  "baseURL": "https://verzel-store.qa-test-verzel-store.workers.dev",
+  "projeto": "chromium",
+  "workers": 1,
+  "retries": 0,
+  "execucoes": [
+    {
+      "cenario": "CT-001",
+      "titulo": "CT-001 — aplicar 10% nos produtos sem descontar o frete",
+      "responsavel": "Codex",
+      "modalidade": "automacao Playwright de UI",
+      "comando": "npx playwright test tests/coupon-shipping.spec.ts --grep CT-001",
+      "inicio": "2026-10-15T22:20:44.510Z",
+      "duracaoMs": 688,
+      "status": "passed",
+      "codigoSaida": 0,
+      "erros": [],
+      "artefatos": [
+        {
+          "nome": "CT-001-resumo",
+          "arquivo": "ct-001-1.png",
+          "tipo": "image/png"
+        }
+      ]
+    },
+    {
+      "cenario": "CT-002",
+      "titulo": "CT-002 — manter frete grátis em exatamente R$ 200 com cupom",
+      "responsavel": "Codex",
+      "modalidade": "automacao Playwright de UI",
+      "comando": "npx playwright test tests/coupon-shipping.spec.ts --grep CT-002",
+      "inicio": "2026-10-15T22:21:09.882Z",
+      "duracaoMs": 11225,
+      "status": "failed",
+      "codigoSaida": 1,
+      "erros": [
+        "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'Resumo do pedido', exact: true }).locator('[data-valor=\"frete\"]')\nExpected: \u001b[32m\"Grátis\"\u001b[39m\nReceived: \u001b[31m\"R$ 19,90\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"soft toHaveText\" getByRole('region', { name: 'Resumo do pedido', exact: true }).locator('[data-valor=\"frete\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Resumo do pedido', exact: true }).locator('[data-valor=\"frete\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <dd data-valor=\"frete\">R$ 19,90</dd>\u001b[22m\n\u001b[2m       - unexpected value \"R$ 19,90\"\u001b[22m\n\n\n  60 |     await expect(summary.locator('[data-valor=\"subtotal\"]')).toHaveText('R$ 200,00');\n  61 |     await expect(summary.locator('[data-valor=\"desconto\"]')).toHaveText('- R$ 20,00');\n> 62 |     await expect.soft(summary.locator('[data-valor=\"frete\"]')).toHaveText('Grátis');\n     |                                                                ^\n  63 |     await expect.soft(summary.locator('[data-valor=\"total\"]')).toHaveText('R$ 180,00');\n  64 |     await testInfo.attach('CT-002-resumo', { body: await page.screenshot(), contentType: 'image/png' });\n  65 |   });\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/coupon-shipping.spec.ts:62:64\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/coupon-shipping.spec.ts:58:3",
+        "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'Resumo do pedido', exact: true }).locator('[data-valor=\"total\"]')\nExpected: \u001b[32m\"R$ 1\u001b[7m80,0\u001b[27m0\"\u001b[39m\nReceived: \u001b[31m\"R$ 1\u001b[7m99,9\u001b[27m0\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"soft toHaveText\" getByRole('region', { name: 'Resumo do pedido', exact: true }).locator('[data-valor=\"total\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Resumo do pedido', exact: true }).locator('[data-valor=\"total\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <dd data-valor=\"total\">R$ 199,90</dd>\u001b[22m\n\u001b[2m       - unexpected value \"R$ 199,90\"\u001b[22m\n\n\n  61 |     await expect(summary.locator('[data-valor=\"desconto\"]')).toHaveText('- R$ 20,00');\n  62 |     await expect.soft(summary.locator('[data-valor=\"frete\"]')).toHaveText('Grátis');\n> 63 |     await expect.soft(summary.locator('[data-valor=\"total\"]')).toHaveText('R$ 180,00');\n     |                                                                ^\n  64 |     await testInfo.attach('CT-002-resumo', { body: await page.screenshot(), contentType: 'image/png' });\n  65 |   });\n  66 | });\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/coupon-shipping.spec.ts:63:64\n    at /Users/greto/Documents/GitHub/verzel-qa-junior/tests/coupon-shipping.spec.ts:58:3"
+      ],
+      "artefatos": [
+        {
+          "nome": "CT-002-calculo-observado",
+          "arquivo": "ct-002-1.json",
+          "tipo": "application/json"
+        },
+        {
+          "nome": "CT-002-resumo",
+          "arquivo": "ct-002-2.png",
+          "tipo": "image/png"
+        },
+        {
+          "nome": "screenshot",
+          "arquivo": "ct-002-3.png",
+          "tipo": "image/png"
+        },
+        {
+          "nome": "video",
+          "arquivo": "ct-002-4.webm",
+          "tipo": "video/webm"
+        },
+        {
+          "nome": "error-context",
+          "arquivo": "ct-002-5.txt",
+          "tipo": "text/markdown"
+        },
+        {
+          "nome": "trace",
+          "arquivo": "ct-002-6.zip",
+          "tipo": "application/zip"
+        }
+      ]
+    },
+    {
+      "cenario": "CT-005",
+      "titulo": "CT-005 — calcular frete pelo subtotal anterior ao desconto",
+      "responsavel": "Codex",
+      "modalidade": "automacao Playwright de UI",
+      "comando": "npx playwright test tests/coupon-shipping.spec.ts --grep CT-005",
+      "inicio": "2026-10-15T22:21:34.030Z",
+      "duracaoMs": 1068,
+      "status": "passed",
+      "codigoSaida": 0,
+      "erros": [],
+      "artefatos": [
+        {
+          "nome": "CT-005-resumo",
+          "arquivo": "ct-005-1.png",
+          "tipo": "image/png"
+        }
+      ]
+    }
+  ]
+}

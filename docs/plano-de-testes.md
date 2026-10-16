@@ -50,9 +50,9 @@ Não são bugs: outra aba/navegador/janela anônima começar vazia; pedidos não
 | Relatos de todos os bugs encontrados | BUG-001 e BUG-002 reproduzidos e documentados; atualizar conforme novas descobertas |
 | Documento de evidências | Índice com capturas e JSONs locais; lacunas específicas identificadas |
 | Pelo menos 3 cenários Playwright | CT-001, CT-002 e CT-005 implementados/executados na UI; dois aprovados e CT-002 reprovado por BUG-001; cobertura restante pendente |
-| README | Inicial; completar navegação e comandos efetivamente verificados |
+| README | Navegação, instalação, execução e consulta dos relatórios documentadas e verificadas; limitações explícitas |
 | Repositório único público | Publicação/visibilidade a conferir ao final |
-| Declaração de IA | Inicial no README; atualizar também para o formulário |
+| Declaração de IA | Registrada no README; envio pelo formulário não realizado |
 | Skill, adicional | Criada em [.agents/skills/verzel-qa](../.agents/skills/verzel-qa/SKILL.md); estrutura validada e uso na execução/consolidação da suíte normal registrado |
 
 O PDF permite IA e exige informar onde/como foi usada. O prazo informado é de cinco dias corridos após o recebimento. Envio pelo formulário indicado no PDF; não faz parte desta etapa.

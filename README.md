@@ -22,6 +22,8 @@ As quatro falhas correspondem a **dois defeitos**, não quatro bugs. A suíte re
 
 O [relatório consolidado](docs/relatorio-consolidado.md) apresenta ambiente, horários, resultado de cada teste, cobertura CA01–CA11, limitações e anexos. São resultados de uma execução registrada, não garantia sobre o estado futuro da loja.
 
+Reprodução e revisão posterior em 16/10/2026: **16 aprovados e quatro falhas conhecidas novamente**, sem alterar expectativas. [Revisão final, verificações e evidências](docs/revisao-final.md).
+
 ## Onde encontrar as entregas
 
 | Entrega | Arquivos |

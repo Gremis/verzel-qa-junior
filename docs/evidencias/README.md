@@ -12,6 +12,8 @@
 | EVD-007 | Agente / automação UI | [Resultados e artefatos Playwright](../execucoes/playwright-ui.md) | Três cenários; falha real preservada, sem checkout |
 | EVD-006 | Agente | [Subtotal 209,90 com cupom](api/acima-com-cupom.json) | Cálculo CT-005 |
 
-Resultados: [manual humano](../execucoes/manual.md) e [investigação por agente](../execucoes/agente-api.md). Defeito: [BUG-001](../bugs/BUG-001.md).
+Resultados: [manual humano](../execucoes/manual.md) e [investigação por agente](../execucoes/agente-api.md). Defeitos: [BUG-001](../bugs/BUG-001.md) e [BUG-002](../bugs/BUG-002.md).
 
 Verificação técnica separada: [INFRA-001](infraestrutura/infra-001.json), teste Playwright local aprovado, sem cobertura de negócio. Relatórios completos são gerados em pastas ignoradas pelo Git; comandos em [automação](../automacao.md).
+
+Revisão posterior: [verificações e reexecução de 16/10/2026](../revisao-final.md), preservada separadamente da EVD-009.
